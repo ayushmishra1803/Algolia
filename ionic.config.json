@@ -1,5 +1,7 @@
 {
   "name": "Algolia",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

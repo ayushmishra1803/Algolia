@@ -1,20 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+<ion-content>
+  <div class="ais-InstantSearch">
+    <h1>Angular InstantSearch e-commerce demo</h1>
+    <ais-instantsearch [config]="config">
+      <div class="left-panel">
+        <ais-configure [searchParameters]="{ hitsPerPage: 8 }"></ais-configure>
+      </div>
+      <div class="right-panel">
+        <ais-search-box></ais-search-box>
+        <ais-hits>
+          <ng-template let-hits="hits">
+            <ol class="ais-Hits-list">
+              <li *ngFor="let hit of hits" class="ais-Hits-item">
+                <ion-img
+                  src="{{hit.image}}"
+                  alt="{{hit.name}}"
+                  align="left"
+                ></ion-img>
+                <div class="hit-name">
+                  <ais-highlight attribute="title" [hit]="hit"></ais-highlight>
+                </div>
+                <div class="hit-description">
+                  <ais-highlight
+                    attribute="description"
+                    [hit]="hit"
+                  ></ais-highlight>
+                </div>
+                <div class="hit-price">Rs{{hit.price}}</div>
+              </li>
+            </ol>
+          </ng-template>
+        </ais-hits>
+      </div>
+    </ais-instantsearch>
   </div>
 </ion-content>
